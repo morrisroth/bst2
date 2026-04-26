@@ -4,3 +4,8 @@ server/uploads/
 server/data/
 .env
 *.log
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.webm
