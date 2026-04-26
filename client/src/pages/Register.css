@@ -1,0 +1,35 @@
+.register-section { padding: 60px 0 80px; }
+
+.register-box {
+  max-width: 680px;
+  margin: 0 auto;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 40px;
+  box-shadow: 0 2px 16px rgba(0,0,0,.06);
+}
+
+.register-box .section-title { font-size: 18px; font-weight: 800; color: var(--green-dark); margin-bottom: 20px; padding-bottom: 8px; border-bottom: 2px solid var(--border); }
+
+.photo-upload { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-top: 8px; }
+.photo-preview { width: 80px; height: 80px; object-fit: cover; border-radius: 50%; border: 2px solid var(--border); }
+.photo-name { font-size: 13px; color: var(--text-light); }
+
+.btn-outline {
+  display: inline-block;
+  padding: 8px 18px;
+  border: 2px solid var(--green-dark);
+  border-radius: var(--radius);
+  color: var(--green-dark);
+  font-weight: 700;
+  cursor: pointer;
+  background: #fff;
+  font-size: 14px;
+  transition: background .2s, color .2s;
+}
+.btn-outline:hover { background: var(--green-dark); color: #fff; }
+
+@media (max-width: 600px) {
+  .register-box { padding: 24px 16px; }
+}

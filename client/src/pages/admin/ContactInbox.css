@@ -1,0 +1,27 @@
+.inbox-layout { display: grid; grid-template-columns: 340px 1fr; gap: 0; background: #fff; border-radius: var(--radius); box-shadow: var(--shadow-sm); overflow: hidden; min-height: 560px; border: 1px solid var(--border); }
+
+/* List */
+.inbox-list { border-left: 1px solid var(--border); overflow-y: auto; max-height: 680px; }
+.inbox-item { padding: 16px 18px; border-bottom: 1px solid var(--border); cursor: pointer; transition: background 0.15s; }
+.inbox-item:hover { background: var(--cream); }
+.inbox-item.active { background: var(--cream-dark); }
+.inbox-item.unread { border-right: 3px solid var(--gold); }
+.inbox-item-top { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 2px; }
+.inbox-item-top strong { font-size: 14px; font-weight: 700; color: var(--green-dark); }
+.inbox-date { font-size: 11px; color: var(--text-muted); white-space: nowrap; }
+.inbox-item-sub { font-size: 12px; color: var(--text-muted); margin-bottom: 4px; }
+.inbox-preview { font-size: 13px; color: var(--text-light); line-height: 1.4; }
+.inbox-subject-tag { display: inline-block; font-size: 11px; background: var(--cream-dark); color: var(--green-dark); padding: 2px 8px; border-radius: 10px; margin-bottom: 4px; font-weight: 600; }
+.inbox-empty { text-align: center; color: var(--text-muted); padding: 40px; font-size: 15px; }
+
+/* Detail */
+.inbox-detail { padding: 28px; overflow-y: auto; }
+.inbox-detail-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 12px; padding-bottom: 20px; border-bottom: 1px solid var(--border); margin-bottom: 20px; }
+.inbox-detail-header h2 { font-size: 20px; font-weight: 800; color: var(--green-dark); margin-bottom: 4px; }
+.inbox-detail-meta { font-size: 14px; color: var(--text-light); display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.inbox-detail-meta a { color: var(--green-mid); text-decoration: underline; }
+.inbox-message { font-size: 15px; color: var(--text); line-height: 1.8; white-space: pre-wrap; background: var(--cream); border-radius: var(--radius); padding: 20px; }
+
+.unread-badge { background: var(--gold); color: #fff; font-size: 12px; font-weight: 700; padding: 3px 10px; border-radius: 12px; }
+
+@media (max-width: 800px) { .inbox-layout { grid-template-columns: 1fr; } .inbox-list { max-height: 300px; } }

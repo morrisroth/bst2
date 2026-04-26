@@ -1,0 +1,20 @@
+.lectures-header { margin-bottom: 36px; }
+.lectures-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.lecture-card { padding: 24px; display: flex; flex-direction: column; gap: 10px; }
+.lecture-top { display: flex; align-items: center; justify-content: space-between; }
+.lecture-level { font-size: 12px; color: var(--text-muted); }
+.lecture-title { font-size: 17px; font-weight: 700; color: var(--green-dark); line-height: 1.4; }
+.lecture-rabbi { font-size: 14px; color: var(--text-light); }
+.lecture-info { display: flex; gap: 16px; flex-wrap: wrap; font-size: 13px; color: var(--text-muted); }
+.badge-blue { background: #e8f0fe; color: #2155cd; }
+.badge-purple { background: #f3e8fe; color: #7b2fb5; }
+.badge-orange { background: #fff3e0; color: #e65100; }
+.lectures-note {
+  margin-top: 40px; background: var(--cream); border-radius: var(--radius);
+  padding: 24px 28px; display: flex; flex-direction: column; gap: 8px;
+  border-right: 4px solid var(--green-mid);
+}
+.lectures-note p { font-size: 15px; color: var(--text-light); }
+
+@media (max-width: 900px) { .lectures-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .lectures-grid { grid-template-columns: 1fr; } }
