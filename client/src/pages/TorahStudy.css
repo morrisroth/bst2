@@ -31,3 +31,9 @@
   .schedule-inner { grid-template-columns: 1fr; }
   .schedule-image { display: none; }
 }
+@media (max-width: 480px) {
+  .intro-box { padding: 20px; font-size: 15px; }
+  .programs-section { padding: 48px 0; }
+  .schedule-section { padding: 48px 0; }
+  .torah-intro { padding: 28px 0 0; }
+}

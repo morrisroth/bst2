@@ -94,4 +94,12 @@
   .bs-content { bottom: 90px; }
   .bs-thumbs { height: 56px; }
   .bs-thumb { width: 76px; height: 48px; }
+  .bs-arrow { width: 38px; height: 38px; font-size: 22px; }
+}
+@media (max-width: 480px) {
+  .banner-slider { height: 280px; }
+  .bs-content { bottom: 16px; width: 94%; }
+  .bs-dots { bottom: auto; top: auto; bottom: 8px; }
+  .bs-thumbs { display: none; }
+  .bs-arrow { width: 32px; height: 32px; font-size: 18px; }
 }
