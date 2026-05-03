@@ -35,7 +35,7 @@ router.post('/', async (req, res) => {
         </table>
       </div>
     `,
-  }).catch(() => {});
+  }).catch(err => console.error('Contact email error:', err.message));
 
   res.json({ success: true });
 });

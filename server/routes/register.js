@@ -81,7 +81,7 @@ router.post('/', (req, res) => {
             </table>
           </div>
         `,
-      }).catch(() => {});
+      }).catch(err => console.error('Register email error:', err.message));
 
       res.json({ success: true });
     } catch (e) {
