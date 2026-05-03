@@ -21,6 +21,7 @@ import PostsList from './pages/admin/PostsList';
 import PostForm from './pages/admin/PostForm';
 import ImagesManager from './pages/admin/ImagesManager';
 import SiteSettings from './pages/admin/SiteSettings';
+import EmailSettings from './pages/admin/EmailSettings';
 
 import './index.css';
 import './whatsapp.css';
@@ -64,6 +65,7 @@ function AppRoutes() {
       <Route path="/admin/registrations" element={<ProtectedRoute><Registrations /></ProtectedRoute>} />
       <Route path="/admin/slider" element={<ProtectedRoute><SliderManager /></ProtectedRoute>} />
       <Route path="/admin/inbox" element={<ProtectedRoute><ContactInbox /></ProtectedRoute>} />
+      <Route path="/admin/email-settings" element={<ProtectedRoute><EmailSettings /></ProtectedRoute>} />
 
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
