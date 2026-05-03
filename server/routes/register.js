@@ -3,6 +3,7 @@ const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
 const auth = require('../middleware/auth');
+const { sendMail } = require('../mailer');
 
 const uploadsDir = path.join(__dirname, '..', 'uploads');
 if (!fs.existsSync(uploadsDir)) fs.mkdirSync(uploadsDir, { recursive: true });
@@ -63,6 +64,26 @@ router.post('/', (req, res) => {
         submittedAt: new Date().toISOString()
       });
       saveRegs(regs);
+
+      sendMail({
+        subject: `הרשמה חדשה – ${firstName} ${lastName}`,
+        html: `
+          <div dir="rtl" style="font-family:Arial,sans-serif;max-width:600px">
+            <h2 style="color:#1b4a5c">הרשמה חדשה התקבלה</h2>
+            <table style="width:100%;border-collapse:collapse">
+              <tr><td style="padding:8px;border:1px solid #ddd;background:#f5f5f5;font-weight:bold">שם משפחה</td><td style="padding:8px;border:1px solid #ddd">${lastName}</td></tr>
+              <tr><td style="padding:8px;border:1px solid #ddd;background:#f5f5f5;font-weight:bold">שם פרטי</td><td style="padding:8px;border:1px solid #ddd">${firstName}</td></tr>
+              <tr><td style="padding:8px;border:1px solid #ddd;background:#f5f5f5;font-weight:bold">מספר זהות</td><td style="padding:8px;border:1px solid #ddd">${idNumber}</td></tr>
+              <tr><td style="padding:8px;border:1px solid #ddd;background:#f5f5f5;font-weight:bold">תאריך לידה (עברי)</td><td style="padding:8px;border:1px solid #ddd">${hebrewDob}</td></tr>
+              <tr><td style="padding:8px;border:1px solid #ddd;background:#f5f5f5;font-weight:bold">תאריך לידה (לועזי)</td><td style="padding:8px;border:1px solid #ddd">${gregorianDob}</td></tr>
+              <tr><td style="padding:8px;border:1px solid #ddd;background:#f5f5f5;font-weight:bold">כתובת</td><td style="padding:8px;border:1px solid #ddd">${address}</td></tr>
+              <tr><td style="padding:8px;border:1px solid #ddd;background:#f5f5f5;font-weight:bold">טלפון בית</td><td style="padding:8px;border:1px solid #ddd">${homePhone}</td></tr>
+              <tr><td style="padding:8px;border:1px solid #ddd;background:#f5f5f5;font-weight:bold">מוסד לימודים נוכחי</td><td style="padding:8px;border:1px solid #ddd">${currentSchool}</td></tr>
+            </table>
+          </div>
+        `,
+      }).catch(() => {});
+
       res.json({ success: true });
     } catch (e) {
       res.status(500).json({ error: 'שגיאה בשמירת הנתונים: ' + e.message });
