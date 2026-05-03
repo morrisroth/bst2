@@ -50,7 +50,6 @@ router.post('/', (req, res) => {
     if (!lastName || !firstName || !idNumber || !hebrewDob || !gregorianDob || !address || !homePhone || !currentSchool) {
       return res.status(400).json({ error: 'יש למלא את כל השדות החובה' });
     }
-    if (!req.files?.photo?.[0]) return res.status(400).json({ error: 'יש להעלות תמונה' });
     try {
       const regs = loadRegs();
       regs.push({

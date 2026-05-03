@@ -28,7 +28,6 @@ export default function Register() {
   const submit = async e => {
     e.preventDefault();
     setError('');
-    if (!photo) { setError('יש להעלות תמונה של התלמיד'); return; }
     setLoading(true);
     try {
       const fd = new FormData();
@@ -97,7 +96,7 @@ export default function Register() {
                 </div>
 
                 <div className="form-group">
-                  <label>תמונת התלמיד *</label>
+                  <label>תמונת התלמיד (אופציונלי)</label>
                   <div className="photo-upload">
                     {photoPreview && <img src={photoPreview} alt="תצוגה מקדימה" className="photo-preview" />}
                     <label className="photo-label">
