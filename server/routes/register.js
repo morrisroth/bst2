@@ -56,7 +56,7 @@ router.post('/', (req, res) => {
         id: Date.now(),
         lastName, firstName, idNumber, hebrewDob, gregorianDob,
         address, homePhone, currentSchool,
-        photo: `/uploads/${req.files.photo[0].filename}`,
+        photo: req.files?.photo?.[0] ? `/uploads/${req.files.photo[0].filename}` : null,
         video: req.files?.video?.[0] ? `/uploads/${req.files.video[0].filename}` : null,
         status: 'pending',
         notes: '',
