@@ -31,7 +31,9 @@
   font-size: 13px; font-weight: 800; color: #fff; flex-shrink: 0;
 }
 
-.admin-nav { flex: 1; padding: 16px 0; }
+.admin-nav { padding: 16px 0; }
+
+.admin-sidebar-footer { margin-top: auto; }
 .admin-nav-item {
   display: flex; align-items: center; gap: 12px;
   padding: 12px 20px; font-size: 14px; font-weight: 500;
