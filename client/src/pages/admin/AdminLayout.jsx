@@ -12,6 +12,7 @@ const navItems = [
   { to: '/admin/inbox', icon: '📬', label: 'הודעות צור קשר' },
   { to: '/admin/settings', icon: '⚙️', label: 'הגדרות אתר' },
   { to: '/admin/email-settings', icon: '📧', label: 'הגדרות אימייל' },
+  { to: '/admin/users', icon: '👥', label: 'משתמשי מנהל' },
 ];
 
 export default function AdminLayout({ children }) {

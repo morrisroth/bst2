@@ -22,6 +22,9 @@ import PostForm from './pages/admin/PostForm';
 import ImagesManager from './pages/admin/ImagesManager';
 import SiteSettings from './pages/admin/SiteSettings';
 import EmailSettings from './pages/admin/EmailSettings';
+import AdminUsers from './pages/admin/AdminUsers';
+import ForgotPassword from './pages/ForgotPassword';
+import ResetPassword from './pages/ResetPassword';
 
 import './index.css';
 import './whatsapp.css';
@@ -54,8 +57,10 @@ function AppRoutes() {
       <Route path="/contact" element={<PublicLayout><Contact /></PublicLayout>} />
       <Route path="/register" element={<PublicLayout><Register /></PublicLayout>} />
 
-      {/* Admin */}
+      {/* Admin auth */}
       <Route path="/admin" element={<AdminLogin />} />
+      <Route path="/admin/forgot-password" element={<ForgotPassword />} />
+      <Route path="/admin/reset-password" element={<ResetPassword />} />
       <Route path="/admin/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
       <Route path="/admin/posts" element={<ProtectedRoute><PostsList /></ProtectedRoute>} />
       <Route path="/admin/new-post" element={<ProtectedRoute><PostForm /></ProtectedRoute>} />
@@ -66,6 +71,7 @@ function AppRoutes() {
       <Route path="/admin/slider" element={<ProtectedRoute><SliderManager /></ProtectedRoute>} />
       <Route path="/admin/inbox" element={<ProtectedRoute><ContactInbox /></ProtectedRoute>} />
       <Route path="/admin/email-settings" element={<ProtectedRoute><EmailSettings /></ProtectedRoute>} />
+      <Route path="/admin/users" element={<ProtectedRoute><AdminUsers /></ProtectedRoute>} />
 
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>

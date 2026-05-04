@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 import { useAuth } from '../context/AuthContext';
 import './AdminLogin.css';
@@ -38,8 +38,8 @@ export default function AdminLogin() {
         </div>
         <form onSubmit={submit}>
           <div className="form-group">
-            <label>שם משתמש</label>
-            <input value={username} onChange={e => setUsername(e.target.value)} required autoComplete="username" />
+            <label>שם משתמש או אימייל</label>
+            <input value={username} onChange={e => setUsername(e.target.value)} required autoComplete="username" placeholder="admin או email@example.com" dir="auto" />
           </div>
           <div className="form-group">
             <label>סיסמה</label>
@@ -55,7 +55,9 @@ export default function AdminLogin() {
             {loading ? 'מתחבר...' : 'כניסה'}
           </button>
         </form>
-        <p className="login-hint">ברירת מחדל: admin / admin123</p>
+        <div style={{ textAlign: 'center', marginTop: 16 }}>
+          <Link to="/admin/forgot-password" style={{ fontSize: 13, color: 'var(--green-mid)' }}>שכחתי סיסמה</Link>
+        </div>
       </div>
     </div>
   );

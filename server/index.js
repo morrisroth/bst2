@@ -17,6 +17,7 @@ app.use('/api/register', require('./routes/register'));
 app.use('/api/slider', require('./routes/slider'));
 app.use('/api/contact', require('./routes/contact'));
 app.use('/api/notify-emails', require('./routes/notifyEmails'));
+app.use('/api/admins', require('./routes/admins'));
 
 // Serve built React app in production
 if (process.env.NODE_ENV === 'production') {

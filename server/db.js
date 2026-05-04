@@ -21,9 +21,13 @@ function saveFile(name, data) {
 // ── admins ──
 let admins = loadFile('admins', []);
 if (!admins.find(a => a.username === 'admin')) {
-  admins.push({ id: 1, username: 'admin', password_hash: bcrypt.hashSync('admin123', 10) });
+  admins.push({ id: 1, username: 'admin', email: '', password_hash: bcrypt.hashSync('admin123', 10) });
   saveFile('admins', admins);
 }
+// ensure existing admins have email field
+let changed = false;
+admins = admins.map(a => { if (!('email' in a)) { changed = true; return { ...a, email: '' }; } return a; });
+if (changed) saveFile('admins', admins);
 
 // ── settings ──
 let settings = loadFile('settings', {
@@ -50,7 +54,32 @@ let nextPostId = posts.reduce((max, p) => Math.max(max, p.id), 0) + 1;
 // ── DB API ──
 const db = {
   // admins
+  getAllAdmins: () => admins.map(({ password_hash, ...a }) => a),
   getAdmin: (username) => admins.find(a => a.username === username) || null,
+  getAdminByEmail: (email) => admins.find(a => a.email && a.email.toLowerCase() === email.toLowerCase()) || null,
+  getAdminById: (id) => admins.find(a => a.id === parseInt(id)) || null,
+  addAdmin: ({ username, email, password }) => {
+    if (admins.find(a => a.username === username)) throw new Error('שם משתמש כבר קיים');
+    if (email && admins.find(a => a.email && a.email.toLowerCase() === email.toLowerCase())) throw new Error('אימייל כבר קיים');
+    const newAdmin = { id: Date.now(), username, email: email || '', password_hash: bcrypt.hashSync(password, 10) };
+    admins.push(newAdmin);
+    saveFile('admins', admins);
+    const { password_hash, ...safe } = newAdmin;
+    return safe;
+  },
+  removeAdmin: (id) => {
+    admins = admins.filter(a => a.id !== parseInt(id));
+    saveFile('admins', admins);
+  },
+  updateAdmin: (id, updates) => {
+    const idx = admins.findIndex(a => a.id === parseInt(id));
+    if (idx === -1) return null;
+    if (updates.password) { updates.password_hash = bcrypt.hashSync(updates.password, 10); delete updates.password; }
+    admins[idx] = { ...admins[idx], ...updates };
+    saveFile('admins', admins);
+    const { password_hash, ...safe } = admins[idx];
+    return safe;
+  },
 
   // settings
   getSettings: () => ({ ...settings }),
